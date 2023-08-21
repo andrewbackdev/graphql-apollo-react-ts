@@ -1,13 +1,13 @@
-import { connection } from '../db/connection.js';
+import { connection } from '../db/connection.js'
 
-const INTERVAL = 4 * 60 * 60 * 1000; // 4h
-const START_TIME = new Date('2023-01-31T09:00:00.000Z').getTime();
+const INTERVAL = 4 * 60 * 60 * 1000 // 4h
+const START_TIME = new Date('2023-01-31T09:00:00.000Z').getTime()
 
-await connection.table('job').truncate();
+await connection.table('job').truncate()
 
-const companyIds = await connection.table('company').pluck('id');
+const companyIds = await connection.table('company').pluck('id')
 
-const jobs = [];
+const jobs = []
 for (let n = 1; n <= 50; n++) {
   jobs.push({
     id: n.toString().padStart(12, '0'),
@@ -15,9 +15,9 @@ for (let n = 1; n <= 50; n++) {
     title: `Job ${n}`,
     description: `This is the job number ${n}.`,
     createdAt: new Date(START_TIME + n * INTERVAL).toISOString(),
-  });
+  })
 }
 
-await connection.table('job').insert(jobs);
+await connection.table('job').insert(jobs)
 
-process.exit();
+process.exit()
