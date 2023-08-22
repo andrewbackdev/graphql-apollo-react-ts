@@ -33,6 +33,6 @@
     "typescript": "^5.0.4"
   },
   "nodemonConfig": {
-    "ext": "graphql,ts"
+    "ext": "graphql,ts,json"
   }
 }
