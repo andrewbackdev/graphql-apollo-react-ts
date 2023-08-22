@@ -1,6 +1,6 @@
 # GraphQL Apollo Client TS Sample Application
 
-This repository (server part) contains a sample application built using the following technologies:
+This repository (client part) contains a sample application built using the following technologies:
 
 - @apollo/client
 - graphql
