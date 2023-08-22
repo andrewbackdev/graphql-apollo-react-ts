@@ -1,3 +1,35 @@
-# graphql-apollo-react-ts
+# GraphQL Apollo Client TS Sample Application
 
-Frontend
+This repository (server part) contains a sample application built using the following technologies:
+
+- @apollo/client
+- graphql
+
+## Getting started
+
+### Installation
+
+1. Clone this repository (do not clone repository twice):
+
+```sh
+git clone https://github.com/andrewbackdev/graphql-apollo-react-ts
+cd graphql-apollo-react-ts/client
+```
+
+2. Install the required npm dependencies:
+
+```sh
+npm ci
+```
+
+### Usage
+
+1. Start the Client:
+
+```sh
+npm run start
+```
+
+2. Access the APP at the default URL: http://localhost:3000
+
+3. Feel free to use default credentials: `email alice@facegle.io` and `password alice123`
