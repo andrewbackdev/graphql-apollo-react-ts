@@ -14,7 +14,7 @@ import { resolvers } from './resolvers.js'
 import { getContext } from './app/context.js'
 import * as ServerConfig from './config/server.js'
 
-const PORT = ServerConfig.Port
+const PORT = process.env.PORT || ServerConfig.Port
 
 const app = express()
 app.use(cors(), express.json(), authMiddleware)
