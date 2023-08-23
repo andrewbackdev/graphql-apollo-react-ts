@@ -4,8 +4,10 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "prebuild": "npm run codegen",
     "build": "tsc",
     "start": "concurrently \"nodemon src/server.ts\" \"graphql-codegen --config codegen.json --watch\"",
+    "start:prod": "node build/server.js",
     "codegen": "graphql-codegen --config codegen.json"
   },
   "dependencies": {
