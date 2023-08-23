@@ -3,19 +3,23 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"graphql-codegen --config codegen.json --watch\"",
-    "build": "react-scripts build",
+    "start": "serve -s build",
+    "start:dev": "concurrently \"env-cmd -f envs/.env react-scripts start\" \"graphql-codegen --config codegen.json --watch\"",
+    "prebuild": "npm run codegen",
+    "build": "env-cmd -f envs/prod.env react-scripts build",
     "codegen": "graphql-codegen --config codegen.json"
   },
   "dependencies": {
     "@apollo/client": "^3.7.12",
     "bulma": "^0.9.4",
+    "env-cmd": "^10.1.0",
     "graphql": "^16.6.0",
     "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.10.0",
-    "react-router-dom": "^6.10.0"
+    "react-router-dom": "^6.10.0",
+    "serve": "^14.2.1"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "3.3.1",

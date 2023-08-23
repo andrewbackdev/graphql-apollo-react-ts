@@ -1,23 +1,30 @@
-import { ApolloClient, ApolloLink, concat, createHttpLink, InMemoryCache } from '@apollo/client';
-import { getAccessToken } from '../auth';
-import { graphql } from '../../generated';
+import {
+  ApolloClient,
+  ApolloLink,
+  concat,
+  createHttpLink,
+  InMemoryCache,
+} from '@apollo/client'
+import { getAccessToken } from '../auth'
+import { graphql } from '../../generated'
+import { ServerGraphQlUri } from '../../config/server'
 
-const httpLink = createHttpLink({ uri: 'http://localhost:9000/graphql' });
+const httpLink = createHttpLink({ uri: ServerGraphQlUri })
 
 const authLink = new ApolloLink((operation, forward) => {
-  const accessToken = getAccessToken();
+  const accessToken = getAccessToken()
   if (accessToken) {
     operation.setContext({
       headers: { 'Authorization': `Bearer ${accessToken}` },
-    });
+    })
   }
-  return forward(operation);
-});
+  return forward(operation)
+})
 
 export const apolloClient = new ApolloClient({
   link: concat(authLink, httpLink),
   cache: new InMemoryCache(),
-});
+})
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const jobDetailFragment = graphql(`
@@ -31,7 +38,7 @@ const jobDetailFragment = graphql(`
     }
     description
   }
-`);
+`)
 
 export const companyByIdQuery = graphql(`
   query CompanyById($id: ID!) {
@@ -46,7 +53,7 @@ export const companyByIdQuery = graphql(`
       }
     }
   }
-`);
+`)
 
 export const jobByIdQuery = graphql(`
   query JobById($id: ID!) {
@@ -54,7 +61,7 @@ export const jobByIdQuery = graphql(`
       ...JobDetail
     }
   }
-`);
+`)
 
 export const jobsQuery = graphql(`
   query Jobs($limit: Int, $offset: Int) {
@@ -71,7 +78,7 @@ export const jobsQuery = graphql(`
       totalCount
     }
   }
-`);
+`)
 
 export const createJobMutation = graphql(`
   mutation CreateJob($input: CreateJobInput!) {
@@ -79,4 +86,4 @@ export const createJobMutation = graphql(`
       ...JobDetail
     }
   }
-`);
+`)
