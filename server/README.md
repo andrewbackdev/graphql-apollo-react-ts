@@ -30,7 +30,7 @@ npm ci
 1. Start the Server:
 
 ```sh
-npm run start
+npm run start:dev
 ```
 
 2. Access the API at the default URL: http://localhost:9000/graphql
